@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+input {
+  padding: 0.3em;
+}
