@@ -10,18 +10,18 @@ const initialState = {
 };
 
 const listReducer = (state = initialState, action) => {
-  console.log('state = ', state);
-  let index;
   switch (action.type) {
     case SAVE_LIST_ITEM:
-      index = state.list.findIndex((item) => item.itemName === state.listItem.itemName);
-      if (index === -1) {
-        state.list.push(state.listItem);
-      } else {
-        state.list[index].itemValue = state.listItem.itemValue;
+      if (state.edit) {
+        const list = state.list.filter((item) => item.itemName !== state.listItem.itemName)
+        return {
+          ...state,
+          list: list.concat(state.listItem),
+        }
       }
       return {
         ...state,
+        list: [...state.list, state.listItem],
       }
 
     case DELETE_LIST_ITEM:

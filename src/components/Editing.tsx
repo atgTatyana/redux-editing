@@ -1,22 +1,24 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setForm, submitForm, setEdit, deleteItem } from "../redux/changeList.js";
 
-interface IItem {
+export interface IItem {
   itemName: string,
   itemValue: string,
 }
 
-// interface IState {
-//   workList: {
-//     edit: boolean,
-//     listItem: IItem,
-//     list: IItem[],
-//   }
-// }
+export interface IWorkList {
+  edit: boolean,
+  listItem: IItem,
+  list: IItem[],
+}
+
+interface IState {
+  workList: IWorkList,
+}
 
 export const Editing = () => {
   const dispatch = useDispatch();
-  const { list, listItem, edit } = useSelector((state) => state.workList);
+  const { list, listItem, edit } = useSelector((state: IState) => state.workList);
   console.log(listItem, list);
 
   const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
